@@ -1,0 +1,1 @@
+<?php require_once __DIR__.'/config.php';$u=$argv[1]??'admin';$p=$argv[2]??'admin123';$s=db()->prepare("INSERT INTO admins(name,username,password_hash) VALUES(?,?,?) ON DUPLICATE KEY UPDATE password_hash=VALUES(password_hash)");$s->execute(['Store Administrator',$u,password_hash($p,PASSWORD_DEFAULT)]);echo "Admin created/updated: $u\n";
